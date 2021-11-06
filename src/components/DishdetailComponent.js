@@ -7,7 +7,6 @@ class DishDetail extends Component{
 
         console.log(props);
         
-        // stores iproperties of this component
         this.state = {
             selectedDishDetail: this.props.dsdetail
         };
@@ -43,17 +42,15 @@ class DishDetail extends Component{
         }
         const cmnts = comments.map(comment => {
             return (
+                <div class="container">
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
                     <p>-- {comment.author},
                     &nbsp;
-                    {new Intl.DateTimeFormat('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: '2-digit'
-                    }).format(new Date(comment.date))}
+                    {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
                     </p>
                 </li>
+                </div>
             )
         })
         return (
